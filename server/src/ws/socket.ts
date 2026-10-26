@@ -8,6 +8,10 @@ export function initSocketServer(httpServer: HttpServer): Server {
 
   io.on("connection", (socket: Socket) => {
     console.log("A client is connected: ", socket.id);
+
+    socket.on("message", (data) => {
+      console.log(data.toString());
+    });
   });
 
   return io;
